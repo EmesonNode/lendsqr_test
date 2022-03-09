@@ -10,11 +10,6 @@ const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUI = require("swagger-ui-express");
 
 const app = express();
-app.use(express.json());
-
-//for json
-app.use(bodyParser.json());
-
 
 const port = process.env.PORT || 3101;
 
@@ -60,6 +55,9 @@ const swaggerDocs = swaggerJsDoc(swaggerOptions);
 //console.log(swaggerDocs);
 app.use("/swagger", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
+
+//for json
+app.use(bodyParser.json());
 
 app.use('', require('./controllers/users'));
 
